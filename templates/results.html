@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block content %}
+<div id="results">
+<h2>Results</h2>
+    <p class="small">About {{ cursor.estimatedResultCount }} results.</p>
+    {% for i in results %}
+    <a href="{{ i.url }}">{{ i.title }}</a><br />
+    {{ i.content }}<br />
+    <span class="url">{{ i.url }}</span><br /><br />
+    {% endfor %}
+</div>
+
+<div id="pager">
+    {% ifnotequal prev_start -4 %}
+    <a href="/search?q={{ q|urlencode }}&start={{ prev_start }}">&laquo;</a>      
+    {% endifnotequal %}
+    {% for p in cursor.pages %}
+    {% ifequal p.label current_page %}
+    {{ p.label }}
+    {% else %}
+    <a href="/search?q={{ q|urlencode }}&start={{ p.start }}">{{ p.label }}</a>
+    {% endifequal %}
+    {% endfor %}
+    <a href="/search?q={{ q|urlencode }}&start={{ next_start }}">&raquo;</a>
+</div>
+{% endblock %}

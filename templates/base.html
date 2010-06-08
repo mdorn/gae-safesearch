@@ -1,0 +1,28 @@
+<html>
+    <head>
+        <link type="text/css" rel="stylesheet" href="/css/main.css" />
+    </head>
+    <body>
+        <h1><a href="/">GAE SafeSearch</a></h1>
+        <div id="search_form">
+            <table summary="search box">
+                <tr>
+                    <td>
+                        <form method="get" action="/search">
+                            <input type="text" name="q" value="{{ q }}"> <input type="submit" value="Search">
+                        </form>
+                    </td>
+                    <td>
+                        <p class="small">
+                            powered by<br>
+                            <img src="/img/small-logo.png" alt="Powered by Google">
+                        </p>
+                    </td>
+                </tr>
+            </table>
+        </div>
+            
+{% block content %}
+{% endblock %}
+    </body>
+</html>
